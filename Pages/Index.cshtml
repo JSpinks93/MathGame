@@ -1,0 +1,23 @@
+﻿@page
+
+<div>
+    <h1>Math Game</h1>
+</div>
+<div>
+    <input id="input">
+    <button onclick="DoMath()">Submit</button>
+</div>
+<div>
+    <h2 id="output"></h2>
+</div>
+
+<script type="text/javascript">
+    document.getElementById('output').value = 1;
+
+    function DoMath() {
+        var input = document.getElementById('input');
+        var output = document.getElementById('output');
+
+        output.innerHTML = 'Jaclyn is a cutie x' + output.value++;
+    }
+</script>
