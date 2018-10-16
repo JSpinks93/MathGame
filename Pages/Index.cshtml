@@ -4,8 +4,11 @@
     <h1>Math Game</h1>
 </div>
 <div>
+    <label id="question"></label>
+</div>
+<div>
     <input id="input">
-    <button onclick="DoMath()">Submit</button>
+    <button onclick="doMath()">Submit</button>
 </div>
 <div>
     <h2 id="output"></h2>
@@ -13,11 +16,37 @@
 
 <script type="text/javascript">
     document.getElementById('output').value = 1;
+    var question = document.getElementById('question');
+    var numberOne = newNumber();
+    var numberTwo = newNumber();
 
-    function DoMath() {
+    question.innerHTML = 'What is ' + numberOne + ' + ' + numberTwo;
+
+    function doMath() {
         var input = document.getElementById('input');
         var output = document.getElementById('output');
 
-        output.innerHTML = 'Jaclyn is a cutie x' + output.value++;
+        if (input.value == (numberOne + numberTwo)) {
+
+            output.innerHTML = 'Thats right! Great job. You so smart!!!!';
+            output.style.color = randomColor();
+
+
+            numberOne = newNumber();
+            numberTwo = newNumber();
+
+            question.innerHTML = 'What is ' + numberOne + ' + ' + numberTwo;
+        }
+        else {
+            output.innerHTML = 'Im sorry dear that is not correct. Please try again.'
+        }
     }
+
+    function newNumber() {
+        return Math.floor(Math.random() * 11);
+    }
+
+    function randomColor() {
+    return '#' + ('00000' + (Math.random() * 16777216 << 0).toString(16)).substr(-6);
+}
 </script>
