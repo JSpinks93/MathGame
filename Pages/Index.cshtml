@@ -1,17 +1,17 @@
 ﻿@page
 
-<div>
-    <h1>Math Game</h1>
-</div>
-<div>
-    <label id="question"></label>
-</div>
-<div>
-    <input id="input">
-    <button onclick="doMath()">Submit</button>
-</div>
-<div>
-    <h2 id="output"></h2>
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Math Game</h1>
+            <label id="question"></label>
+            <br>
+            <input id="input">
+            <button onclick="doMath()" class="btn btn-primary">Submit</button>
+            <h2 id="output"></h2>
+        </div>
+    </div>
 </div>
 
 <script type="text/javascript">
@@ -27,10 +27,10 @@
         var output = document.getElementById('output');
 
         if (input.value == (numberOne + numberTwo)) {
-
-            output.innerHTML = 'Thats right! Great job. You so smart!!!!';
+            
+            input.value = "";
+            output.innerHTML = 'Correct!';
             output.style.color = randomColor();
-
 
             numberOne = newNumber();
             numberTwo = newNumber();
@@ -38,7 +38,9 @@
             question.innerHTML = 'What is ' + numberOne + ' + ' + numberTwo;
         }
         else {
-            output.innerHTML = 'Im sorry dear that is not correct. Please try again.'
+            input.value = "";
+            output.innerHTML = 'Incorrect. Please try again.';
+            output.style.color = randomColor();
         }
     }
 
